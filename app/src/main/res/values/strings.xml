@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">AndroidSharedPreferencesDemo</string>
     <string name="shared_preferences_title">Shared Preferences Demo</string>
-    <string name="et_hint">DATA</string>
+    <string name="et_hint">Input new data</string>
     <string name="save_data">Save data</string>
+    <string name="text_view_shared_preferences_title">Current shared preferences dara:</string>
 </resources>

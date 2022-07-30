@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.example.androidsharedpreferencesdemo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -19,14 +18,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         sharedPreferences = getSharedPreferences(App.APP_PREFERENCES, Context.MODE_PRIVATE)
-        loadDataFromSharedPreferences()
+        renderSharedPreferencesData()
         binding.btnSaveData.setOnClickListener { onClickSaveDataButton() }
+        sharedPreferences.registerOnSharedPreferenceChangeListener
 
     }
 
-    private fun loadDataFromSharedPreferences() {
-        binding.etData.setText(
-            sharedPreferences.getString(App.PREF_EDIT_TEXT_VALUE, "[default]"))
+    private fun renderSharedPreferencesData() {
+        val data = sharedPreferences.getString(App.PREFERENCES_VALUE, "")
+        binding.tvSharedPreferencesData.text = data
     }
 
     private fun onClickSaveDataButton() {
@@ -35,8 +35,8 @@ class MainActivity : AppCompatActivity() {
 
         sharedPreferences
             .edit()
-            .putString(App.PREF_EDIT_TEXT_VALUE, value)
-            .apply()
+            .putString(App.PREFERENCES_VALUE, value)
+            .commit()
 
     }
 
