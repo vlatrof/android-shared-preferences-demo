@@ -4,4 +4,5 @@
     <string name="et_hint">Input new data</string>
     <string name="save_data">Save data</string>
     <string name="text_view_shared_preferences_title">Current shared preferences dara:</string>
+    <string name="toast_message_shared_preferences_data_changed">Shared preferences data has changed</string>
 </resources>
