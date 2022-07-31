@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var sharedPreferences: SharedPreferences
+    // shared preferences listener init on activity object created
     private val sharedPreferencesChangeListener = initSharedPreferencesListener()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,9 +20,16 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // init shared preferences object
         sharedPreferences = getSharedPreferences(App.APP_PREFERENCES, Context.MODE_PRIVATE)
+
+        // initial shared preferences render on activity creating
         renderSharedPreferencesData()
+
+        // set onClickListener o button to save new shared preferences data
         binding.btnSaveData.setOnClickListener { onClickSaveDataButton() }
+
+        // register shared preferences listener
         sharedPreferences.registerOnSharedPreferenceChangeListener(sharedPreferencesChangeListener)
 
     }
@@ -29,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
 
+        // unregister shared preferences listener
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(sharedPreferencesChangeListener)
     }
 
@@ -69,7 +78,6 @@ class MainActivity : AppCompatActivity() {
         ).show()
 
         renderSharedPreferencesData()
-
     }
 
 }
