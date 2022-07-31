@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         // initial shared preferences render on activity creating
         renderSharedPreferencesData()
 
-        // set onClickListener o button to save new shared preferences data
+        // set onClickListener on button to save new shared preferences data
         binding.btnSaveData.setOnClickListener { onClickSaveDataButton() }
 
         // register shared preferences listener
